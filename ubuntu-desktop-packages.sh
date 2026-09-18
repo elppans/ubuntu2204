@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+. /etc/os-release
 
 pacotes=(
 branding-ubuntu
@@ -26,7 +27,7 @@ ubuntu-session
 ubuntu-settings
 ubuntu-standard
 ubuntu-wallpapers
-ubuntu-wallpapers-jammy
+ubuntu-wallpapers-"${UBUNTU_CODENAME}"
 gstreamer1.0-pipewire:amd64
 libpipewire-0.3-0:amd64
 libpipewire-0.3-common
