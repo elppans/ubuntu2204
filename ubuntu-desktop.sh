@@ -53,5 +53,5 @@ sudo apt clean
 sudo apt autoclean
 sudo apt autoremove
 
-sleep 15
+# sleep 15
 sudo systemctl reboot -i
