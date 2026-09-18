@@ -130,7 +130,8 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y teamviewer -o Dpkg::Optio
 # - dconf-editor: Configurações avançadas de GNOME
 # - meld: ferramenta gr�fica para diff e merge de arquivos
 # - nautilus-admin: Abrir pastas como root pelo gerenciador de arquivos
-sudo apt -y install dconf-editor nautilus-admin nautilus-image-converter python3-nautilus gtkhash meld
+# - gtkhash: GTK+ utility for computing checksums and more - Dependência para "nautilus-gtkhash"
+sudo apt -y install dconf-editor nautilus-admin nautilus-image-converter nautilus-gtkhash python3-nautilus meld
 
 # Instalação VSCodium e restauração de backup de extensões
 sudo apt -y install codium
@@ -145,7 +146,7 @@ sudo chmod +x /usr/local/bin/vscodeum-extensions
 /usr/local/bin/vscodeum-extensions import /tmp/vscodium_extensions.txt
 
 # Gerenciador de banco de dados
-# sudo apt -y install dbeaver-ce # Movido para sessão Flatpak
+sudo apt -y install dbeaver-ce
 
 # VPN openFortiGUI
 sudo apt -y install openfortigui
@@ -161,9 +162,9 @@ echo "Configurando Flatpak e Snap..."
 sudo apt -y install flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y flathub com.rtosta.zapzap
-sudo flatpak install -y flathub com.github.marktext.marktext
+# sudo flatpak install -y flathub com.github.marktext.marktext
 sudo flatpak install -y flathub org.kde.kate
-sudo flatpak install -y flathub io.dbeaver.DBeaverCommunity
+# sudo flatpak install -y flathub io.dbeaver.DBeaverCommunity
 
 # --- INSTALAÇÃO DO WINE VIA FLATPAK ---
 
@@ -180,7 +181,7 @@ echo -e '#!/bin/bash\n/usr/bin/flatpak run --command=winetricks org.winehq.Wine 
 sudo chmod +x /usr/local/bin/wine /usr/local/bin/winetricks
 
 # Snap (Apps clássicos e editores)
-# sudo snap install marktext # Movido para sessão Flatpak
+sudo snap install marktext
 sudo snap install prettier --beta
 # sudo snap install kate --classic
 
@@ -229,9 +230,9 @@ gsettings set org.gnome.shell.weather automatic-location true
 mkdir -p "$HOME"/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/
 mkdir -p "$HOME"/.var/app/io.dbeaver.DBeaverCommunity/data/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/
 mkdir -p "$HOME"/snap/dbeaver-ce/current/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/
-# sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
-# sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/.var/app/io.dbeaver.DBeaverCommunity/data/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
-# sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/snap/dbeaver-ce/current/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
+sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs &>/dev/null
+sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/.var/app/io.dbeaver.DBeaverCommunity/data/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs &>/dev/null
+sed -i 's/ui.auto.update.check=true/ui.auto.update.check=false/g' "$HOME"/snap/dbeaver-ce/current/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs &>/dev/null
 echo "ui.auto.update.check=false" | tee -a "$HOME"/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
 echo "ui.auto.update.check=false" | tee -a "$HOME"/.var/app/io.dbeaver.DBeaverCommunity/data/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
 echo "ui.auto.update.check=false" | tee -a "$HOME"/snap/dbeaver-ce/current/.local/share/DBeaverData/workspace6/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.jkiss.dbeaver.core.prefs
