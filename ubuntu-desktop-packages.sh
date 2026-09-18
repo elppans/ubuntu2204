@@ -9,7 +9,7 @@ network-manager-config-connectivity-ubuntu
 plymouth-theme-ubuntu-text
 ubuntu-advantage-desktop-daemon
 ubuntu-advantage-tools
-ubuntu-desktop
+# ubuntu-desktop
 ubuntu-desktop-minimal
 ubuntu-docs
 ubuntu-drivers-common
