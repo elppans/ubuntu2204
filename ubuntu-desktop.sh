@@ -43,7 +43,7 @@ EOF
 # -- Pacotes do sistema --
 sudo apt update
 sudo apt --fix-broken install
-sudo apt install --reinstall ubuntu-desktop gdm3 -y
+sudo apt install --reinstall ubuntu-desktop-minimal gdm3 -y
 sudo dpkg-reconfigure gdm3
 sudo systemctl set-default graphical.target
 sudo apt install -f
